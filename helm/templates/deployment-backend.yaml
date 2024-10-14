@@ -13,18 +13,25 @@ spec:
         app: backend
     spec:
       containers:
-        - name: backend
-          image: {{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}
-          ports:
-            - containerPort: {{ .Values.backend.service.port }}
-          env:
-            - name: DB_USER
-              value: {{ .Values.postgresql.postgresqlUsername }}
-            - name: DB_PASSWORD
-              value: {{ .Values.postgresql.postgresqlPassword }}
-            - name: DB_NAME
-              value: {{ .Values.postgresql.postgresqlDatabase }}
-            - name: DB_HOST
-              value: postgresql
-            - name: DB_PORT
-              value: "5432"
+      - name: backend
+        image: nooboys/threebackend:latest  # Ensure you push your Docker image to a registry
+        ports:
+        - containerPort: 3000
+        volumeMounts:
+        - mountPath: /data
+          name: backend-storage
+      volumes:
+      - name: backend-storage
+        persistentVolumeClaim:
+          claimName: backend-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: backend-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

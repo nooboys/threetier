@@ -13,7 +13,7 @@ spec:
         app: frontend
     spec:
       containers:
-        - name: frontend
-          image: {{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}
-          ports:
-            - containerPort: {{ .Values.frontend.service.port }}
+      - name: frontend
+        image: nooboys/threefrontend:latest  # Ensure you push your Docker image to a registry
+        ports:
+        - containerPort: 80

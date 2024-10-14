@@ -1,26 +1,18 @@
-# values.yaml
-
-postgresql:
-  enabled: true
-  postgresqlUsername: your_db_user
-  postgresqlPassword: your_db_password
-  postgresqlDatabase: your_db_name
-  service:
-    type: ClusterIP
-    port: 5432
+replicaCount: 1
 
 backend:
   image:
-    repository: your_docker_repo/backend
+    repository: backend
     tag: latest
   service:
-    type: ClusterIP
-    port: 5000
+    port: 3000
 
 frontend:
   image:
-    repository: your_docker_repo/frontend
+    repository: frontend
     tag: latest
   service:
-    type: LoadBalancer
-    port: 3000
+    port: 80
+
+persistence:
+  size: 1Gi
