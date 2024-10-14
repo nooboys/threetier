@@ -5,6 +5,7 @@ backend:
     repository: backend
     tag: latest
   service:
+    type: ClusterIP 
     port: 3000
 
 frontend:
@@ -12,6 +13,7 @@ frontend:
     repository: frontend
     tag: latest
   service:
+    type: ClusterIP
     port: 80
 
 persistence:
