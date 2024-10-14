@@ -1,5 +1,8 @@
 replicaCount: 1
 
+namespace:
+  name: dev-namespace
+
 backend:
   image:
     repository: backend
@@ -9,6 +12,8 @@ backend:
     port: 3000
 
 frontend:
+  deployment:
+    replicas: 2
   image:
     repository: frontend
     tag: latest
