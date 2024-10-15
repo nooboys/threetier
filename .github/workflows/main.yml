@@ -19,8 +19,8 @@ jobs:
             echo "$line" >> $GITHUB_ENV
           done < .env
 
-      - name: Push Docker image to ACR
+      - name: List value
         run: |
-          echo ${{ env.ACR_repo }}
+          echo ${{ env.ACR_REPO }}
           echo ${{ env.RESOURCE_GROUP }}
           echo ${{ env.CONTAINER_NAME }}
