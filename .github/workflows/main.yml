@@ -1,0 +1,20 @@
+name: CI/CD - Build, Push to ACR, and Deploy to Azure Container Apps
+
+on:
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Load Environment Variables
+        id: load-env
+        run: |
+          echo "Loading environment variables from env file"
+          while IFS= read -r line; do
+            echo "$line" >> $GITHUB_ENV
+          done < env.yml
