@@ -17,4 +17,4 @@ jobs:
           echo "Loading environment variables from env file"
           while IFS= read -r line; do
             echo "$line" >> $GITHUB_ENV
-          done < env.yml
+          done < .env
