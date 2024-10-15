@@ -18,3 +18,9 @@ jobs:
           while IFS= read -r line; do
             echo "$line" >> $GITHUB_ENV
           done < .env
+
+      - name: Push Docker image to ACR
+        run: |
+          echo ${{ env.ACR_repo }}
+          echo ${{ env.RESOURCE_GROUP }}
+          echo ${{ env.CONTAINER_NAME }}
