@@ -14,7 +14,7 @@ jobs:
       - name: Load Environment Variables
         id: load-env
         run: |
-          echo "Loading environment variables from env file"
+          echo "Loading environment variables from .env file"
           while IFS= read -r line; do
             echo "$line" >> $GITHUB_ENV
           done < .env
